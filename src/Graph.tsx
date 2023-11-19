@@ -14,6 +14,10 @@ interface IProps {
  * Perspective library adds load to HTMLElement prototype.
  * This interface acts as a wrapper for Typescript compiler.
  */
+
+/**
+ * Added HTMLElement inheritance to PerspectiveViewerElement
+ */
 interface PerspectiveViewerElement extends HTMLElement {
   load: (table: Table) => void,
 }
@@ -22,6 +26,7 @@ interface PerspectiveViewerElement extends HTMLElement {
  * React component that renders Perspective based on data
  * parsed from its parent through data property.
  */
+
 class Graph extends Component<IProps, {}> {
   // Perspective table
   table: Table | undefined;
