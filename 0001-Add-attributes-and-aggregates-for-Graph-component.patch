@@ -1,0 +1,35 @@
+From b3ded1c5da8c8f8a2a74aa6ad7b4bbe93342891e Mon Sep 17 00:00:00 2001
+From: JoelSalas <salas.22@buckeyemail.osu.edu>
+Date: Sun, 19 Nov 2023 20:01:08 +0000
+Subject: [PATCH] Add attributes and aggregates for Graph component
+
+---
+ src/Graph.tsx | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/Graph.tsx b/src/Graph.tsx
+index a04da45..a64e543 100644
+--- a/src/Graph.tsx
++++ b/src/Graph.tsx
+@@ -40,6 +40,18 @@ class Graph extends Component<IProps, {}> {
+     // This is the <perspective-viewer> DOM reference.
+     // Simplified the code to get the element
+     const elem = document.getElementsByTagName('perspective-viewer')[0] as unknown as PerspectiveViewerElement;
++    // Added the 'view', 'column-pivots', 'row-pivots', 'columns', 'aggregates' attributes
++    // and 'aggregates' for Graph component 
++    elem.setAttribute('view', 'y_line');
++    elem.setAttribute('column-pivots', '["stock"]');
++    elem.setAttribute('row-pivots', '["timestamp"]');
++    elem.setAttribute('columns', '["top_ask_price"]');
++    elem.setAttribute('aggregates', `
++    {"stock":"distinct count",
++    "top_ask_price":"avg",
++    "top_bid_price":"avg",
++    "timestamp":"distinct count"}`);
++
+ 
+     const schema = {
+       stock: 'string',
+-- 
+2.42.1
+
