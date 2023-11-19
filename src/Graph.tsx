@@ -40,6 +40,18 @@ class Graph extends Component<IProps, {}> {
     // This is the <perspective-viewer> DOM reference.
     // Simplified the code to get the element
     const elem = document.getElementsByTagName('perspective-viewer')[0] as unknown as PerspectiveViewerElement;
+    // Added the 'view', 'column-pivots', 'row-pivots', 'columns', 'aggregates' attributes
+    // and 'aggregates' for Graph component 
+    elem.setAttribute('view', 'y_line');
+    elem.setAttribute('column-pivots', '["stock"]');
+    elem.setAttribute('row-pivots', '["timestamp"]');
+    elem.setAttribute('columns', '["top_ask_price"]');
+    elem.setAttribute('aggregates', `
+    {"stock":"distinct count",
+    "top_ask_price":"avg",
+    "top_bid_price":"avg",
+    "timestamp":"distinct count"}`);
+
 
     const schema = {
       stock: 'string',
